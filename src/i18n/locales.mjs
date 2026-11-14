@@ -4,15 +4,11 @@
  *
  * Plain JS (not TS) so astro.config.mjs can import it too.
  *
- * To add a language, list it here. Routes, the language switcher, hreflang,
- * search and content `locale` values all follow from this list. Translate it by
- * adding src/i18n/translations/<locale>.ts: built-in UI strings ship for en, es
- * and fr, and anything untranslated falls back to the default locale.
- * `npm create velocity-astro@latest -- --i18n` sets up es and fr for you.
+ * Indonesian is the default language; English is available under /en/.
  */
 
-/** @type {'en'} */
-export const defaultLocale = 'en';
+/** @type {'id' | 'en'} */
+export const defaultLocale = 'id';
 
-/** @type {readonly ['en']} */
-export const locales = /** @type {const} */ (['en']);
+/** @type {readonly ['id', 'en']} */
+export const locales = /** @type {const} */ (['id', 'en']);
