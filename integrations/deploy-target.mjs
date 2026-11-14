@@ -59,7 +59,13 @@ export async function resolveDeployTarget(env = process.env) {
     case 'cloudflare': {
       const { default: cloudflare } = await importAdapter('@astrojs/cloudflare', name);
       const { cacheCloudflare } = await import('@astrojs/cloudflare/cache');
-      return { name, adapter: cloudflare({ imageService: 'passthrough' }), cacheProvider: cacheCloudflare() };
+      return { 
+        name, 
+        adapter: cloudflare({ 
+          imageService: 'passthrough' 
+        }), 
+        cacheProvider: cacheCloudflare() 
+      };
     }
     default: {
       const { default: node } = await importAdapter('@astrojs/node', name);
