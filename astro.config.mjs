@@ -120,7 +120,9 @@ export default defineConfig({
   },
 
   image: {
-    layout: 'constrained',
+    service: {
+      entrypoint: 'astro/assets/services/noop',
+    },
   },
 
   integrations: [
