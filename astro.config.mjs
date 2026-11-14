@@ -59,7 +59,6 @@ const searchPages = new Set(
 
 export default defineConfig({
   site: process.env.SITE_URL || 'https://velocity.dickisyahrul.workers.dev/',
-  output: 'server',
 
   // Locales come from src/i18n/locales.mjs (one list for routing, UI and sitemap).
   // The default locale has no URL prefix; others live under /<locale>/.
