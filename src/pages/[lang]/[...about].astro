@@ -1,8 +1,5 @@
 ---
-/**
- * About page for non-default locales (e.g. /es/…).
- * Generates nothing while only one locale is enabled in src/i18n/locales.mjs.
- */
+/** About page for each non-default locale (currently /en/about/). */
 import AboutView from '@/views/AboutView.astro';
 import { getLocalizedStaticPaths, type Locale } from '@/i18n';
 
@@ -10,7 +7,9 @@ export function getStaticPaths() {
   return getLocalizedStaticPaths('about', 'about');
 }
 
-const { locale } = Astro.props as { locale: Locale };
+// Derive the locale from the actual URL segment to avoid rendering translated
+// routes using the default locale when page props are stale or misconfigured.
+const locale = Astro.params.lang as Locale;
 ---
 
 <AboutView locale={locale} />

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { firstTranslation } from '@/i18n';
+import { firstTranslation, translate } from '@/i18n';
 import { getLocaleName, getLocaleTag } from '@/i18n/config';
 
 describe('locale helpers', () => {
@@ -24,6 +24,20 @@ describe('locale helpers', () => {
     ['ja', '日本語'],
   ])('names %s as %s', (locale, name) => {
     expect(getLocaleName(locale)).toBe(name);
+  });
+});
+
+describe('localized page copy', () => {
+  it('uses English copy for English About, Contact, and Search pages', () => {
+    expect(translate('en', 'about.hero.badge')).toBe('Our Story');
+    expect(translate('en', 'contact.hero.badge')).toBe('Get in Touch');
+    expect(translate('en', 'search.title')).toBe('Search');
+  });
+
+  it('keeps Indonesian copy for the default locale', () => {
+    expect(translate('id', 'about.hero.badge')).toBe('Kisah Kami');
+    expect(translate('id', 'contact.hero.badge')).toBe('Hubungi Kami');
+    expect(translate('id', 'search.title')).toBe('Cari');
   });
 });
 
