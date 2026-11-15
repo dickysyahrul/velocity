@@ -1,6 +1,4 @@
 ---
-import SearchView from '@/views/SearchView.astro';
-import { defaultLocale } from '@/i18n';
+/** Keep the former English-style URL working after Indonesian routes became the default. */
+return Astro.redirect('/cari/', 301);
 ---
-
-<SearchView locale={defaultLocale} />
