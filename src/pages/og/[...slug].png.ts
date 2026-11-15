@@ -7,19 +7,20 @@ import { getPosts, getPostUrl } from '@/lib/blog';
 
 /**
  * Open Graph images, generated at build time for every page URL:
- * /og/index.png, /og/about.png, /og/es/index.png, /og/es/sobre-nosotros.png,
- * /og/blog/<slug>.png …
+ * /og/index.png, /og/about.png, /og/en/index.png, /og/blog/<slug>.png …
  *
  * SEO.astro points og:image at /og/<page path>.png (or /og/<locale>/index.png
  * for a locale's home page), so this route and SEO.astro must stay in sync.
  */
 
-/** OG slug for a page path: '/' → 'index', '/es' → 'es/index', '/es/blog' → 'es/blog' */
+/** OG slug for a page path: '/' → 'index', '/en' → 'en/index', '/en/blog' → 'en/blog' */
 function ogSlug(path: string): string {
-  const clean = path.replace(/^\/|\/$/g, '');
+  const clean = path.replace(/^\//, '').replace(/\/$/, '');
   if (!clean) return 'index';
   return isValidLocale(clean) ? `${clean}/index` : clean;
 }
+
+export const prerender = true;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const routeDefs: Record<string, RouteDefinition> = routes;
@@ -30,7 +31,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       .map((id) => ({
         params: { slug: ogSlug(localizeRoute(id, locale)) },
         props: {
-          // Pages added with `--pages` or the add-page skill have <id>Page.title
           title: id === 'home' ? siteConfig.name : firstTranslation(locale, [`nav.${id}`, `${id}Page.title`], siteConfig.name),
           description: id === 'home' ? siteConfig.description : translate(locale, 'site.tagline'),
           type: 'website' as const,
@@ -66,7 +66,6 @@ export const GET: APIRoute = async ({ props }) => {
     type,
   });
 
-  // Convert Buffer to Uint8Array for Response compatibility
   return new Response(new Uint8Array(png), {
     headers: {
       'Content-Type': 'image/png',

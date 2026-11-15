@@ -3,9 +3,11 @@ import BlogPostView from '@/views/BlogPostView.astro';
 import { defaultLocale, locales } from '@/i18n';
 import { getPosts, getPostSlug } from '@/lib/blog';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const paths = [];
-  for (const lang of locales.filter((l) => l !== defaultLocale)) {
+  for (const lang of locales.filter((locale) => locale !== defaultLocale)) {
     for (const post of await getPosts(lang)) {
       paths.push({ params: { lang, slug: getPostSlug(post) }, props: { post } });
     }

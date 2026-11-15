@@ -1,10 +1,11 @@
 ---
 /**
- * Home page for non-default locales (e.g. /es/).
- * Generates nothing while only one locale is enabled in src/i18n/locales.mjs.
+ * Home page for non-default locales (e.g. /en/).
  */
 import HomeView from '@/views/HomeView.astro';
 import { getLocalizedStaticPaths, type Locale } from '@/i18n';
+
+export const prerender = true;
 
 export function getStaticPaths() {
   return getLocalizedStaticPaths('home', null);
