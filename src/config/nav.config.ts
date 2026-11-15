@@ -1,3 +1,9 @@
+/**
+ * Navigation & route configuration
+ *
+ * `path` is the Indonesian (default-locale) URL slug. `slugs.en` defines the
+ * corresponding English URL under the `/en/` prefix.
+ */
 export interface RouteDefinition {
   /** URL path for the default locale, without slashes ('' = home). */
   path: string;
@@ -10,9 +16,9 @@ export interface RouteDefinition {
 export const routes = {
   home: { path: '' },
   blog: { path: 'blog' },
-  about: { path: 'about', slugs: { id: 'tentang-kami', es: 'sobre-nosotros', fr: 'a-propos' } },
-  contact: { path: 'contact', slugs: { id: 'kontak', es: 'contacto' } },
-  search: { path: 'search', slugs: { id: 'cari', es: 'buscar', fr: 'recherche' } },
+  about: { path: 'tentang-kami', slugs: { en: 'about' } },
+  contact: { path: 'kontak', slugs: { en: 'contact' } },
+  search: { path: 'cari', slugs: { en: 'search' } },
   components: { path: 'components', localized: false },
 } satisfies Record<string, RouteDefinition>;
 
