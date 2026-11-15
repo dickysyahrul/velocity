@@ -1,7 +1,4 @@
 ---
-/** Indonesian default-locale About page at /tentang-kami/. */
-import AboutView from '@/views/AboutView.astro';
-import { defaultLocale } from '@/i18n';
+/** Legacy Indonesian slug redirected to the canonical /about/ route. */
+return Astro.redirect('/about/', 301);
 ---
-
-<AboutView locale={defaultLocale} />

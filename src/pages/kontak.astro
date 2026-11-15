@@ -1,7 +1,4 @@
 ---
-/** Indonesian default-locale Contact page at /kontak/. */
-import ContactView from '@/views/ContactView.astro';
-import { defaultLocale } from '@/i18n';
+/** Legacy Indonesian slug redirected to the canonical /contact/ route. */
+return Astro.redirect('/contact/', 301);
 ---
-
-<ContactView locale={defaultLocale} />

@@ -1,4 +1,7 @@
 ---
-/** Keep the former English-style URL working after Indonesian routes became the default. */
-return Astro.redirect('/tentang-kami/', 301);
+/** Indonesian default-locale About page at /about/. */
+import AboutView from '@/views/AboutView.astro';
+import { defaultLocale } from '@/i18n';
 ---
+
+<AboutView locale={defaultLocale} />
