@@ -1,13 +1,6 @@
 ---
-/** Contact page for each non-default locale (currently /en/contact/). */
-import ContactView from '@/views/ContactView.astro';
-import { getLocalizedStaticPaths, type Locale } from '@/i18n';
-
+/** Legacy catch-all route superseded by the explicit localized Contact route. */
 export function getStaticPaths() {
-  return getLocalizedStaticPaths('contact', 'contact');
+  return [];
 }
-
-const locale = Astro.params.lang as Locale;
 ---
-
-<ContactView locale={locale} />

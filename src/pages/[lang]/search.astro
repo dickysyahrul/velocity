@@ -1,0 +1,15 @@
+---
+/** English Search page at /en/search/. */
+import SearchView from '@/views/SearchView.astro';
+import { defaultLocale, locales, type Locale } from '@/i18n';
+
+export function getStaticPaths() {
+  return locales
+    .filter((locale) => locale !== defaultLocale)
+    .map((lang) => ({ params: { lang }, props: { locale: lang } }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+---
+
+<SearchView locale={locale} />
