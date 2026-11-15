@@ -1,5 +1,11 @@
 ---
-/** Legacy catch-all route superseded by the explicit localized About route. */
+/**
+ * Retired catch-all About route. The explicit localized route in about.astro
+ * owns /<lang>/about/; prerendering this empty path set avoids an SSR route
+ * collision while keeping the legacy source file harmless.
+ */
+export const prerender = true;
+
 export function getStaticPaths() {
   return [];
 }

@@ -1,5 +1,7 @@
 ---
-/** Legacy catch-all route superseded by the explicit localized Search route. */
+/** Retired catch-all Search route; search.astro owns /<lang>/search/. */
+export const prerender = true;
+
 export function getStaticPaths() {
   return [];
 }

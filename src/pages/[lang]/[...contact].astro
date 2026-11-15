@@ -1,5 +1,7 @@
 ---
-/** Legacy catch-all route superseded by the explicit localized Contact route. */
+/** Retired catch-all Contact route; contact.astro owns /<lang>/contact/. */
+export const prerender = true;
+
 export function getStaticPaths() {
   return [];
 }
