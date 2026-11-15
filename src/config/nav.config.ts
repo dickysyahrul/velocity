@@ -1,3 +1,9 @@
+/**
+ * Navigation & route configuration
+ *
+ * Indonesian is the default locale and keeps the existing English-style slugs.
+ * English is served under /en/ with the same slugs.
+ */
 export interface RouteDefinition {
   /** URL path for the default locale, without slashes ('' = home). */
   path: string;
@@ -10,9 +16,9 @@ export interface RouteDefinition {
 export const routes = {
   home: { path: '' },
   blog: { path: 'blog' },
-  about: { path: 'about', slugs: { id: 'tentang-kami', es: 'sobre-nosotros', fr: 'a-propos' } },
-  contact: { path: 'contact', slugs: { id: 'kontak', es: 'contacto' } },
-  search: { path: 'search', slugs: { id: 'cari', es: 'buscar', fr: 'recherche' } },
+  about: { path: 'about', slugs: { en: 'about' } },
+  contact: { path: 'contact', slugs: { en: 'contact' } },
+  search: { path: 'search', slugs: { en: 'search' } },
   components: { path: 'components', localized: false },
 } satisfies Record<string, RouteDefinition>;
 
